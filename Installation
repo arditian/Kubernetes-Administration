@@ -1,0 +1,35 @@
+- Install packages:
+sudo apt install -y apt-transport-https; curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+
+- Add list sources:
+vim kubernetes.list -->
+deb http://apt.kubernetes.io/ kubernetes-xenial main
+
+- Update and Install:
+sudo mv kubernetes.list /etc/apt/sources.list.d/kubernetes.list && sudo apt update; sudo apt install -y kubectl kubelet kubeadm
+
+- Install POD Network Flannel:
+kubectl apply -f [filename]
+
+- Display pods:
+kubectl get pods --all-namespaces --watch
+
+- Diplsay nodes:
+kubectl get nodes
+
+### Deploying StandAlone App and Multitier App###
+
+- Create Deployment:
+kubectl create -f [deploymentfile]
+kubectl get deployments
+kubectl get replicasets
+kubectl get pods
+
+- Create Service:
+kubectl create -f [servicefile]
+kubectl get service
+kubectl describe svc [servicename]
+
+- Scale FrontEnd:
+kubectl scale --replicas=X -f [frontendfile]
+
